@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="content">
+        <div class="register">
+
+            <div class="col-md-6 login-right">
+                <h3>登陆</h3>
+                <p>已有账号，直接登陆。</p>
+                <form method="post" action="/login/">
+                    <div>
+                        <span>用户名<label>*</label></span>
+                        <input type="text" name="nickname">
+                    </div>
+                  <!--  <div>
+                        <span>密码<label>*</label></span>
+                        <label for="password"></label>
+                        <input class="form_int" id="password" type="password" name="password" placeholder="请输入正确的密码" spellcheck="false"  value=""/>
+                        <span style="display: none;" class="pass_tip">大写锁定已打开</span>
+                    </div> -->
+                  <p><label for="password">密码*</label><input type="password" id="password" name="password" /><span style="display:none;">大写锁定键被按下，请注意大小写</span></p>
+                    <script type="text/javascript">
+//<![CDATA[
+                        function  detectCapsLock(event){
+                         var e = event||window.event;
+                         var o = e.target||e.srcElement;
+                         var oTip = o.nextSibling;
+                         var keyCode  =  e.keyCode||e.which; // 按键的keyCode
+                          var isShift  =  e.shiftKey ||(keyCode  ==   16 ) || false ; // shift键是否按住
+                        if (
+                        ((keyCode >=   65   &&  keyCode  <=   90 )  &&   !isShift) // Caps Lock 打开，且没有按住shift键
+                            || ((keyCode >=   97   &&  keyCode  <=   122 )  &&  isShift)// Caps Lock 打开，且按住shift键
+                        ){oTip.style.display = '';}
+                            else{oTip.style.display  =  'none';}
+                            }
+                        document.getElementById('password').onkeypress = detectCapsLock;
+//]]>
+                        </script>
+                    <a class="forgot" href="/update/">忘记密码?</a>
+                    <input type="submit" value="立即登陆">
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{% endblock %}
